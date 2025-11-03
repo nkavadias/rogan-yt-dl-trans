@@ -6,7 +6,6 @@ Uses yt-dlp to download subtitles/transcripts without downloading videos.
 
 import subprocess
 import sys
-import os
 from pathlib import Path
 
 
