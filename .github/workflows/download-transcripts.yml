@@ -1,0 +1,36 @@
+name: Download Transcripts
+
+on:
+  workflow_dispatch:  # Allows manual triggering
+  schedule:
+    # Run weekly on Sunday at 00:00 UTC (optional)
+    - cron: '0 0 * * 0'
+
+jobs:
+  download-transcripts:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Download transcripts
+        run: |
+          python download_transcripts.py
+      
+      - name: Upload transcripts as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: transcripts
+          path: transcripts/
+          retention-days: 90
