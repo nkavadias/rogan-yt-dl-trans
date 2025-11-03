@@ -3,6 +3,7 @@
 #
 @{
     # For latest supported version, go to 'https://www.powershellgallery.com/packages/Az'.
-    # To use the Az module in your function app, please uncomment the line below.
+    # To use the Az module in your function app, uncomment the line below.
+    # Note: This is required if you enable the Azure authentication in profile.ps1
     # 'Az' = '11.*'
 }
